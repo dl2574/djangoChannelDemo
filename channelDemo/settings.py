@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne", # Takes control of runserver and will conflict with other apps which do the same (i.e. Whitenoise)
     "chat.apps.ChatConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -68,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-# ASGI_APPLICATION = "channelDemo.asgi.application"
+ASGI_APPLICATION = "channelDemo.asgi.application"
 WSGI_APPLICATION = "channelDemo.wsgi.application"
 
 
@@ -123,3 +124,12 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [("127.0.0.1", 6379)],
+#         },
+#     },
+# }
